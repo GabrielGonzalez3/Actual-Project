@@ -1,20 +1,22 @@
-class trainer{
-    constructor(id, trainername){
+class Trainer{
+    constructor(id, trainerName){
         this.id = id;
-        this.trainername = trainername;
+        this.trainerName = trainerName;
     }
 }
 
 const trainers = [];
 
-export function CreateTrainer(name){
-    const trainer = new trainer(trainers.length + 1, name);
-
+export function createTrainer(name){
+    const trainer = new Trainer(
+        trainers.length + 1, 
+        name
+    );
     trainers.push(trainer);
 
     return trainer;
 }
 
-export function GetAllTrainers(){
+export function getAllTrainers(){
     return trainers;
 }

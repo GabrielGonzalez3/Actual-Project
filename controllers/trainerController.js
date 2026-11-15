@@ -1,10 +1,10 @@
 import {
-    CreateTrainer,
-    GetAllTrainers
+    createTrainer,
+    getAllTrainers
 } from "../services/trainerServices.js";
 
 export function getTrainerPage(req, res) {
-    const trainers = GetAllTrainers();
+    const trainers = getAllTrainers();
 
     res.render("trainers", { trainers });
 };
@@ -12,7 +12,7 @@ export function getTrainerPage(req, res) {
 export function addTrainer (req, res) {
     const { trainerName} = req.body;
 
-    CreateTrainer(trainerName);
+    createTrainer(trainerName);
 
     res.redirect("/trainers");
 };

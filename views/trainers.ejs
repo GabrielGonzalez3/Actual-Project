@@ -3,4 +3,31 @@
 
 <h1>Trainer Management</h1>
 
+<form action ="/trainers" method="POST">
+    <label for="trainerName">
+        Trainer Name
+    </label>
+
+    <input
+        type="text"
+        id="trainerName"
+        name="trainerName"
+        required
+    >
+
+    <button type="submit">Create Trainer</button>
+</form>
+
+<hr>
+
+<h2>Regesitered Trainers</h2>
+
+<ul>
+    <% trainers.forEach(trainer => { %>
+        <li>
+            <%= trainer.trainerName %>
+        </li>
+    <% }) %>
+</ul>
+
 <%- include("partials/footer") %>
