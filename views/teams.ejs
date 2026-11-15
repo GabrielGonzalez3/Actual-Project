@@ -3,4 +3,51 @@
 
 <h1>Team Management</h1>
 
+<form action="/teams" method="POST">
+    <label for="trainerId">
+        Trainer
+    </label>
+
+    <select
+        id="trainerId"
+        name="trainerId"
+        required
+    >
+        <% trainers.forEach(trainer => { %>
+            <option value="<%= trainer.id %>">
+                <%= trainer.trainerName %>
+            </option>
+        <% }) %>
+    </select>
+
+    <br><br>
+    <label for="teamName">
+        Team Name
+    </label>
+
+    <input
+        type="text"
+        id="teamName"
+        name="teamName"
+        required
+    >
+    <button type="submit">
+        Create Team
+    </button>
+</form>
+
+<h2>Teams</h2>
+
+<ul>
+    <% teamDetails.forEach(team => { %>
+        <li>
+            Team Name:
+            <%= team.teamName %>
+            |
+            Trainer:
+            <%= team.trainerName %>
+        </li>
+    <% }) %>
+</ul>
+
 <%- include("partials/footer") %>

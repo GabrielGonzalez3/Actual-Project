@@ -18,5 +18,6 @@ export function createTrainer(name){
 }
 
 export function getAllTrainers(){
+    console.log(trainers);
     return trainers;
 }
