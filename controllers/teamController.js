@@ -87,7 +87,7 @@ export function addPokemon(req, res){
         res.redirect("/teams");
     }
     catch(err){
-        res.send(error.message);
+        res.send(err.message);
     }
     
 };
@@ -102,7 +102,7 @@ export function removePokemon(req, res){
     removePokemonFromTeam(id);
 
     res.redirect("/teams");
-}
+};
 
 export function publishTeamGizmo(req, res){
     const {id} = req.params;
@@ -110,4 +110,28 @@ export function publishTeamGizmo(req, res){
     publishTeam(id);
 
     res.redirect("/teams");
-}
+};
+
+export function getPublishedTeamsPage(req, res){
+    const submission = getAllSubmissions();
+    const teams = getAllTeams();
+    const trainers = getAllTrainers();
+
+    const publishedTeams = submission.map(submission => {
+        const team = teams.find(
+            team => team.id === submission.teamId
+        );
+        const trainer = trainers.find(
+            trainer => trainer.id === team.trainerId
+        );
+        return{
+            teamName: team.teamName,
+            trainerName: trainer.trainerName
+        };
+    });
+
+    res.render(
+        "publishedTeams",
+        { publishedTeams }
+    );
+};

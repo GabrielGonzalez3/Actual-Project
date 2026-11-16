@@ -9,7 +9,7 @@ class TeamMemeber {
 const teamMemebers = [];
 
 export function addPokemontoTeam(teamId, pokemonId){
-    const pokemonCount = teamMemeber.filter(
+    const pokemonCount = teamMemebers.filter(
         member => member.teamId === Number(teamId)
     ).length;
 

@@ -85,16 +85,16 @@
             Trainer:
             <%= team.trainerName %>
         </li>
+        <form
+            action="/teams/publish/<%= team.id %>"
+            method="POST"
+            style="display:inline;"
+        >
+                <button type="submit">
+                Publish Team
+            </button>
+        </form>
     <% }) %>
-    <form
-        action="/teams/publish/<%= team.id %>"
-        method="POST"
-        style="display:inline;"
-    >
-            <button type="submit">
-            Publish Team
-        </button>
-    </form>
 </ul>
 
 <h2>Team Members</h2>

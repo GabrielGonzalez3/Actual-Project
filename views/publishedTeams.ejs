@@ -1,0 +1,18 @@
+<%- include("partials/header") %>
+<%- include("partials/nav") %>
+
+<h1>Published Teams</h1>
+
+<ul>
+    <% publishedTeams.forEach(team => { %>
+        <li>
+            Team:
+            <%= team.teamName %>
+            |
+            Trainer:
+            <%= team.trainerName %>
+        </li>
+    <% }) %>
+</ul>
+
+<%- include("partials/footer") %>
