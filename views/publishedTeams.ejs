@@ -5,13 +5,20 @@
 
 <ul>
     <% publishedTeams.forEach(team => { %>
-        <li>
-            Team:
+        <h3>
             <%= team.teamName %>
-            |
+        </h3>
+        <P>
             Trainer:
             <%= team.trainerName %>
-        </li>
+        </P>
+        <ul>
+            <% team.pokemon.forEach(pokemon => { %>
+                <li>
+                    <%= pokemon %>
+                </li>
+            <% }) %>
+        </ul>
     <% }) %>
 </ul>
 

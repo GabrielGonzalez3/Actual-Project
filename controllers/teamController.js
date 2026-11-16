@@ -116,6 +116,8 @@ export function getPublishedTeamsPage(req, res){
     const submission = getAllSubmissions();
     const teams = getAllTeams();
     const trainers = getAllTrainers();
+    const teamMembers = getAllTeamMembers();
+    const pokemon = getAllPokemon();
 
     const publishedTeams = submission.map(submission => {
         const team = teams.find(
@@ -124,9 +126,17 @@ export function getPublishedTeamsPage(req, res){
         const trainer = trainers.find(
             trainer => trainer.id === team.trainerId
         );
+        const pokemonONTeam = teamMembers.filter(member =>
+            member.teamId === team.id).map(member => {
+                const pokey = pokemon.find(
+                    p => p.id === member.pokemonId
+                ); 
+                return pokey ? pokey.pokemonName : "Unknown";
+            });
         return{
             teamName: team.teamName,
-            trainerName: trainer.trainerName
+            trainerName: trainer.trainerName,
+            pokemon: pokemonONTeam
         };
     });
 
