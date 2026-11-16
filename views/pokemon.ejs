@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+<%- include("partials/nav") %>
+
+<h1>Pokemon</h1>
+
+<ul>
+    <% pokemon.forEach(pokemon => { %>
+        <li>
+            <strong><%= pokemon.pokemonName %></strong>
+
+            <%= pokemon.primaryType %>
+            <% if(pokemon.secondaryType) {%>
+                / <%= pokemon.secondaryType %>
+            <% } %>
+        </li>
+    <% }) %>
+</ul>
+
+<%- include("partials/footer") %>
