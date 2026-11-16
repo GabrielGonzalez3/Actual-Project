@@ -17,6 +17,11 @@ import{
     getAllPokemon
 } from "../services/pokemonService.js";
 
+import{
+    publishTeam,
+    getAllSubmissions
+} from "../services/teamSubmissionService.js";
+
 export function getTeamPage(req, res){
     
     const teams = getAllTeams();
@@ -95,6 +100,14 @@ export function removePokemon(req, res){
     console.log("ID", id);
 
     removePokemonFromTeam(id);
+
+    res.redirect("/teams");
+}
+
+export function publishTeamGizmo(req, res){
+    const {id} = req.params;
+
+    publishTeam(id);
 
     res.redirect("/teams");
 }
