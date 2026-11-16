@@ -9,7 +9,8 @@ import{
 
 import{
     addPokemontoTeam,
-    getAllTeamMembers
+    getAllTeamMembers,
+    removePokemonFromTeam
 } from "../services/teamMemberService.js";
 
 import{
@@ -32,6 +33,7 @@ export function getTeamPage(req, res){
         );
 
         return {
+            id: member.id,
             teamName: team ? team.teamName : "Unknown",
             pokemonName: pokeymon ? pokeymon.pokemonName : "Unknown"
         };
@@ -78,3 +80,15 @@ export function addPokemon(req, res){
 
     res.redirect("/teams");
 };
+
+export function removePokemon(req, res){
+    console.log("REMOVE ROUTE HIT");
+    
+    const {id} = req.params;
+
+    console.log("ID", id);
+
+    removePokemonFromTeam(id);
+
+    res.redirect("/teams");
+}

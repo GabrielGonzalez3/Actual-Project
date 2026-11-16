@@ -93,11 +93,24 @@
 <ul>
     <% teamMemberDetails.forEach(member => {%>
         <li>
+            ID:
+            <%= member.id %>
+
             Team Name:
             <%= member.teamName %>
             |
             Pokemon Name:
             <%= member.pokemonName %>
+
+            <form
+                action="/teams/pokemon/remove/<%= member.id %>"
+                method="POST"
+                style="display:inline;"
+            >
+                <button type="submit">
+                    Remove
+                </button>
+            </form>
         </li>
     <% }) %>
 </ul>

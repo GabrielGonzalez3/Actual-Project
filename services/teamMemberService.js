@@ -24,3 +24,12 @@ export function getAllTeamMembers(){
     return teamMemebers;
 }
 
+export function removePokemonFromTeam(id){
+    const index = teamMemebers.findIndex(
+        member => member.id === Number(id)
+    );
+
+    if(index !== -1){
+        teamMemebers.splice(index, 1);
+    }
+}
