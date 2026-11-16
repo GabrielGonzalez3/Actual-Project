@@ -72,13 +72,19 @@ export function addTeam(req, res){
 };
 
 export function addPokemon(req, res){
-    console.log("Pokemon Route hit!");
     
-    const { teamId, pokemonId } = req.body;
+    console.log("Pokemon Route hit!");
+    try{
+        const { teamId, pokemonId } = req.body;
 
-    addPokemontoTeam(teamId, pokemonId);
+        addPokemontoTeam(teamId, pokemonId);
 
-    res.redirect("/teams");
+        res.redirect("/teams");
+    }
+    catch(err){
+        res.send(error.message);
+    }
+    
 };
 
 export function removePokemon(req, res){

@@ -9,6 +9,15 @@ class TeamMemeber {
 const teamMemebers = [];
 
 export function addPokemontoTeam(teamId, pokemonId){
+    const pokemonCount = teamMemeber.filter(
+        member => member.teamId === Number(teamId)
+    ).length;
+
+    if(pokemonCount >= 6){
+        throw new Error( "Teams can only have 6 Pokemon"
+        );
+    }
+    
     const teamMemeber = new TeamMemeber(
         teamMemebers.length + 1,
         Number(teamId),
