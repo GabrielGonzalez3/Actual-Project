@@ -36,6 +36,44 @@
     </button>
 </form>
 
+<hr>
+
+<h2>Add Pokemon To Team</h2>
+
+<form action="/teams/pokemon" method="POST">
+    <label>
+        Team
+    </label>
+
+    <select name="teamId">
+        <% teams.forEach(team => { %>
+            <option value="<%= team.id %>">
+                <%= team.teamName %>
+            </option>
+        <% }) %>
+    </select>
+
+    <br><br>
+
+    <label>
+        Pokemon
+    </label>
+
+    <select name="pokemonId">
+        <% pokemon.forEach(pokey => { %>
+            <option value="<%= pokey.id %>">
+                <%= pokey.pokemonName %>
+            </option>
+        <% }) %>
+    </select>
+    <br><br>
+    
+    <button type="submit">
+        Add Pokemon
+    </button>
+
+</form>
+
 <h2>Teams</h2>
 
 <ul>
@@ -46,6 +84,20 @@
             |
             Trainer:
             <%= team.trainerName %>
+        </li>
+    <% }) %>
+</ul>
+
+<h2>Team Members</h2>
+
+<ul>
+    <% teamMemberDetails.forEach(member => {%>
+        <li>
+            Team Name:
+            <%= member.teamName %>
+            |
+            Pokemon Name:
+            <%= member.pokemonName %>
         </li>
     <% }) %>
 </ul>
