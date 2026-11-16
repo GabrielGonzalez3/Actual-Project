@@ -12,7 +12,7 @@ export function createTrainer(name){
         trainer => trainer.trainerName.toLowerCase() === name.toLowerCase()
     );
     
-    if(exisitingTrainer){
+    if(existingTrainer){
         throw new Error("A trainer with that name already exists");
     }
 

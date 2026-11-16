@@ -10,10 +10,11 @@ const teams = [];
 
 export function createTeam(trainerId, teamName){
     const existingTeam = teams.find(
-        team => team.teamName.toLowerCase() === teamName.toLowerCase()
+        team => team.trainerId === Number(trainerId) && 
+        team.teamName.toLowerCase() === teamName.toLowerCase()
     );
     
-    if(exisitingTeam){
+    if(existingTeam){
         throw new Error("A team with that name already exists");
     }
     
