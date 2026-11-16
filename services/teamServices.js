@@ -9,6 +9,14 @@ class Team {
 const teams = [];
 
 export function createTeam(trainerId, teamName){
+    const existingTeam = teams.find(
+        team => team.teamName.toLowerCase() === teamName.toLowerCase()
+    );
+    
+    if(exisitingTeam){
+        throw new Error("A team with that name already exists");
+    }
+    
     const team = new Team(
         teams.length + 1,
         trainerId, 

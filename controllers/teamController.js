@@ -67,13 +67,20 @@ export function getTeamPage(req, res){
 };
 
 export function addTeam(req, res){
-    const { trainerId, teamName } = req.body;
+    try{
+        const { trainerId, teamName } = req.body;
 
-    createTeam(
-        Number(trainerId),
-        teamName
-    );
-    res.redirect("/teams");
+        createTeam(
+            Number(trainerId),
+            teamName
+        );
+        res.redirect("/teams");
+    }
+    catch(err){
+        res.send(err.message);
+    }
+    
+    
 };
 
 export function addPokemon(req, res){
@@ -105,11 +112,16 @@ export function removePokemon(req, res){
 };
 
 export function publishTeamGizmo(req, res){
-    const {id} = req.params;
+    try{
+        const {id} = req.params;
 
-    publishTeam(id);
+        publishTeam(id);
 
-    res.redirect("/teams");
+        res.redirect("/teams");
+    }
+    catch(err){
+        res.send(err.message);
+    }
 };
 
 export function getPublishedTeamsPage(req, res){

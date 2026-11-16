@@ -10,9 +10,14 @@ export function getTrainerPage(req, res) {
 };
 
 export function addTrainer (req, res) {
-    const { trainerName} = req.body;
+    try{
+        const { trainerName} = req.body;
 
-    createTrainer(trainerName);
+        createTrainer(trainerName);
 
-    res.redirect("/trainers");
+        res.redirect("/trainers");
+    }
+    catch(err){
+        res.send(err.message);
+    }
 };
