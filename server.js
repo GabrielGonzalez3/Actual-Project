@@ -15,6 +15,7 @@ app.use(helmet()); //Cool side note, this is basically a buffer inbetween my rou
 app.use(express.urlencoded({ extended: true}));
 app.set("view engine", "ejs");
 app.use(logger);
+app.use(express.static("public"));
 
 app.use("/", homeRoutes);
 app.use("/trainers", trainerRoutes);

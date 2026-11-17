@@ -3,17 +3,16 @@
 
 <h1>Pokemon</h1>
 
-<ul>
-    <% pokemon.forEach(pokemon => { %>
-        <li>
-            <strong><%= pokemon.pokemonName %></strong>
+
+<% pokemon.forEach(pokemon => { %>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png"
+        alt="<%= pokemon.pokemonName %>">    
 
             <%= pokemon.primaryType %>
             <% if(pokemon.secondaryType) {%>
                 / <%= pokemon.secondaryType %>
             <% } %>
-        </li>
-    <% }) %>
-</ul>
+<% }) %>
+
 
 <%- include("partials/footer") %>

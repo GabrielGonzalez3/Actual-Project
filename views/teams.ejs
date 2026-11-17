@@ -1,127 +1,125 @@
 <%- include("partials/header") %>
 <%- include("partials/nav") %>
 
-<h1>Team Management</h1>
+<div class="container">
+    <h1>Team Management</h1>
 
-<form action="/teams" method="POST">
-    <label for="trainerId">
-        Trainer
-    </label>
+    <div class="form-card">
+        <h2>Create Team</h2>
 
-    <select
-        id="trainerId"
-        name="trainerId"
-        required
-    >
-        <% trainers.forEach(trainer => { %>
-            <option value="<%= trainer.id %>">
-                <%= trainer.trainerName %>
-            </option>
-        <% }) %>
-    </select>
+        <form action="/teams" method="POST">
 
-    <br><br>
-    <label for="teamName">
-        Team Name
-    </label>
+            <label for="trainerId">Trainer</label>
 
-    <input
-        type="text"
-        id="teamName"
-        name="teamName"
-        required
-    >
-    <button type="submit">
-        Create Team
-    </button>
-</form>
-
-<hr>
-
-<h2>Add Pokemon To Team</h2>
-
-<form action="/teams/pokemon" method="POST">
-    <label>
-        Team
-    </label>
-
-    <select name="teamId">
-        <% teams.forEach(team => { %>
-            <option value="<%= team.id %>">
-                <%= team.teamName %>
-            </option>
-        <% }) %>
-    </select>
-
-    <br><br>
-
-    <label>
-        Pokemon
-    </label>
-
-    <select name="pokemonId">
-        <% pokemon.forEach(pokey => { %>
-            <option value="<%= pokey.id %>">
-                <%= pokey.pokemonName %>
-            </option>
-        <% }) %>
-    </select>
-    <br><br>
-    
-    <button type="submit">
-        Add Pokemon
-    </button>
-
-</form>
-
-<h2>Teams</h2>
-
-<ul>
-    <% teamDetails.forEach(team => { %>
-        <li>
-            Team Name:
-            <%= team.teamName %>
-            |
-            Trainer:
-            <%= team.trainerName %>
-        </li>
-        <form
-            action="/teams/publish/<%= team.id %>"
-            method="POST"
-            style="display:inline;"
-        >
-                <button type="submit">
-                Publish Team
-            </button>
-        </form>
-    <% }) %>
-</ul>
-
-<h2>Team Members</h2>
-
-<ul>
-    <% teamMemberDetails.forEach(member => {%>
-        <li>
-            ID:
-            <%= member.id %>
-
-            Team Name:
-            <%= member.teamName %>
-            |
-            Pokemon Name:
-            <%= member.pokemonName %>
-
-            <form
-                action="/teams/pokemon/remove/<%= member.id %>"
-                method="POST"
-                style="display:inline;"
+            <select
+                id="trainerId"
+                name="trainerId"
+                required
             >
-                <button type="submit">
-                    Remove
-                </button>
-            </form>
-        </li>
-    <% }) %>
-</ul>
+                <% trainers.forEach(trainer => { %>
+                    <option value="<%= trainer.id %>">
+                        <%= trainer.trainerName %>
+                    </option>
+                <% }) %>
+            </select>
+
+            <label for="teamName">Team Name</label>
+
+            <input
+                type="text"
+                id="teamName"
+                name="teamName"
+                required
+            >
+
+            <button type="submit">
+                Create Team
+            </button>
+
+        </form>
+    </div>
+
+    <div class="form-card">
+        <h2>Add Pokemon To Team</h2>
+
+        <form action="/teams/pokemon" method="POST">
+
+            <label>Team</label>
+
+            <select name="teamId">
+                <% teams.forEach(team => { %>
+                    <option value="<%= team.id %>">
+                        <%= team.teamName %>
+                    </option>
+                <% }) %>
+            </select>
+
+            <label>Pokemon</label>
+
+            <select name="pokemonId">
+                <% pokemon.forEach(pokey => { %>
+                    <option value="<%= pokey.id %>">
+                        <%= pokey.pokemonName %>
+                    </option>
+                <% }) %>
+            </select>
+
+            <button type="submit">
+                Add Pokemon
+            </button>
+
+        </form>
+    </div>
+
+    <h2>Teams</h2>
+
+    <div class="teams-container">
+        <% teamDetails.forEach(team => { %>
+            <div class="team-card">
+
+                <h3><%= team.teamName %></h3>
+
+                <p>
+                    Trainer:
+                    <strong><%= team.trainerName %></strong>
+                </p>
+
+                <form
+                    action="/teams/publish/<%= team.id %>"
+                    method="POST"
+                >
+                    <button type="submit">
+                        Publish Team
+                    </button>
+                </form>
+            </div>
+        <% }) %>
+
+    </div>
+
+    <h2>Team Members</h2>
+
+    <div class="members-container">
+        <% teamMemberDetails.forEach(member => { %>
+            <div class="member-card">
+                <h3><%= member.teamName %></h3>
+
+                <p>
+                    Pokemon:
+                    <strong><%= member.pokemonName %></strong>
+                </p>
+
+                <form
+                    action="/teams/pokemon/remove/<%= member.id %>"
+                    method="POST">
+                    <button type="submit">
+                        Remove
+                    </button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+
+</div>
 
 <%- include("partials/footer") %>
