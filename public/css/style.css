@@ -21,27 +21,43 @@ nav a:hover {
 }
 
 .pokemon-grid{
-    display:flex;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
     gap:20px;
+    justify-items:center;
+    max-width:1400px;
+    margin:auto;
 }
 
+
 .pokemon-card{
+    background:white;
     width:200px;
+    padding:15px;
+    border-radius:12px;
     text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
 }
 
 .pokemon-card img{
     width:120px;
     height:120px;
+    object-fit:contain;
 }
 
-.pokemon-card,
-.shared-card,
+.pokemon-card h3{
+    margin:10px 0 5px 0;
+}
+
+.pokemon-card p{
+    margin:0;
+}
+
+
 .trainer-card,
 .form-card,
-.team-card,
-.member-card {
+.team-card {
     background: white;
     padding: 20px;
     margin-bottom: 20px;
@@ -60,4 +76,48 @@ button{
 
 button:hover{
     background:#b52b0c;
+}
+
+.members-container{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+}
+
+.member-card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+
+.member-image{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+}
+
+.shared-pokemon{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:15px;
+}
+
+.shared-pokemon-card{
+    text-align:center;
+}
+
+.shared-pokemon-card img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #e8f4ff;
+    margin: 0;
 }
