@@ -3,16 +3,21 @@
 
 <h1>Pokemon</h1>
 
+<div class="pokemon-grid">
+    <div class="pokemon-card">
+        <% pokemon.forEach(pokemon => { %>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png"
+            alt="<%= pokemon.pokemonName %>">    
 
-<% pokemon.forEach(pokemon => { %>
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png"
-        alt="<%= pokemon.pokemonName %>">    
+                <%= pokemon.primaryType %>
+                <% if(pokemon.secondaryType) {%>
+                    / <%= pokemon.secondaryType %>
+                <% } %>
+        <% }) %>
+    </div>
+</div>
 
-            <%= pokemon.primaryType %>
-            <% if(pokemon.secondaryType) {%>
-                / <%= pokemon.secondaryType %>
-            <% } %>
-<% }) %>
+
 
 
 <%- include("partials/footer") %>

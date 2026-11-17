@@ -3,7 +3,7 @@
 
 <h1>Published Teams</h1>
 
-<ul>
+<div class="shared-card">
     <% publishedTeams.forEach(team => { %>
         <h3>
             <%= team.teamName %>
@@ -20,6 +20,6 @@
             <% }) %>
         </ul>
     <% }) %>
-</ul>
+    </div>
 
 <%- include("partials/footer") %>

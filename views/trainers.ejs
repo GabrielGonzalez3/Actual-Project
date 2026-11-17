@@ -22,12 +22,12 @@
 
 <h2>Regesitered Trainers</h2>
 
-<ul>
+<div class="trainer-container">
     <% trainers.forEach(trainer => { %>
-        <li>
+        <div class=""trainer-card>
             <%= trainer.trainerName %>
-        </li>
+        </div>
     <% }) %>
-</ul>
+    </div>
 
 <%- include("partials/footer") %>
