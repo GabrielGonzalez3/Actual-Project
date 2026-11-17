@@ -4,17 +4,21 @@
 <h1>Pokemon</h1>
 
 <div class="pokemon-grid">
-    <div class="pokemon-card">
-        <% pokemon.forEach(pokemon => { %>
-        <img src="<%= pokemon.image %>"
+    <% pokemon.forEach(pokemon => { %>
+        <div class="pokemon-card">
+            <img src="<%= pokemon.image %>"
             alt="<%= pokemon.pokemonName %>">    
-
+            <h3>
+                <%= pokemon.pokemonName %>
+            </h3>
+            <p>
                 <%= pokemon.primaryType %>
                 <% if(pokemon.secondaryType) {%>
                     / <%= pokemon.secondaryType %>
                 <% } %>
-        <% }) %>
-    </div>
+            </p>
+        </div>
+    <% }) %>
 </div>
 
 
