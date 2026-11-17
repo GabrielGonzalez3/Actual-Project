@@ -6,7 +6,7 @@
 <div class="pokemon-grid">
     <div class="pokemon-card">
         <% pokemon.forEach(pokemon => { %>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png"
+        <img src="<%= pokemon.image %>"
             alt="<%= pokemon.pokemonName %>">    
 
                 <%= pokemon.primaryType %>
