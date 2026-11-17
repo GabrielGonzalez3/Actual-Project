@@ -102,11 +102,15 @@
     <div class="members-container">
         <% teamMemberDetails.forEach(member => { %>
             <div class="member-card">
-                <h3><%= member.teamName %></h3>
+                <img src="<%= member.pokemonImage %>"
+                alt="<%= member.pokemonName %>"
+                class="member-image">
+
+                <h3><%= member.pokemonName %></h3>
 
                 <p>
-                    Pokemon:
-                    <strong><%= member.pokemonName %></strong>
+                    Team:
+                    <%= member.teamName %>
                 </p>
 
                 <form

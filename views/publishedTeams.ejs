@@ -3,23 +3,32 @@
 
 <h1>Published Teams</h1>
 
-<div class="shared-card">
-    <% publishedTeams.forEach(team => { %>
+<% publishedTeams.forEach(team => { %>
+    <div class="shared-card">
+
         <h3>
             <%= team.teamName %>
         </h3>
-        <P>
+
+        <p>
             Trainer:
             <%= team.trainerName %>
-        </P>
-        <ul>
+        </p>
+
+        <div class="shared-pokemon">
             <% team.pokemon.forEach(pokemon => { %>
-                <li>
-                    <%= pokemon %>
-                </li>
+                <div class="shared-pokemon-card">
+                    <img
+                        src="<%= pokemon.pokemonImage %>"
+                        alt="<%= pokemon.pokemonName %>">
+
+                    <p>
+                        <%= pokemon.pokemonName %>
+                    </p>
+                </div>
             <% }) %>
-        </ul>
-    <% }) %>
+        </div>
     </div>
+<% }) %>
 
 <%- include("partials/footer") %>

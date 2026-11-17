@@ -36,11 +36,13 @@ export function getTeamPage(req, res){
         const pokeymon = pokemon.find(
             pokeymon => pokeymon.id === member.pokemonId
         );
-
+        //console.log(pokeymon);
+        //console.log(pokeymon.image);
         return {
             id: member.id,
             teamName: team ? team.teamName : "Unknown",
-            pokemonName: pokeymon ? pokeymon.pokemonName : "Unknown"
+            pokemonName: pokeymon ? pokeymon.pokemonName : "Unknown",
+            pokemonImage: pokeymon ? pokeymon.image : ""
         };
     });
 
@@ -143,7 +145,14 @@ export function getPublishedTeamsPage(req, res){
                 const pokey = pokemon.find(
                     p => p.id === member.pokemonId
                 ); 
-                return pokey ? pokey.pokemonName : "Unknown";
+
+                console.log(pokey);
+                console.log(pokey.image);
+
+                return {
+                    pokemonName :pokey ? pokey.pokemonName : "Unknown",
+                    pokemonImage: pokey ? pokey.image: ""
+                };
             });
         return{
             teamName: team.teamName,
@@ -151,7 +160,7 @@ export function getPublishedTeamsPage(req, res){
             pokemon: pokemonONTeam
         };
     });
-
+    console.log(JSON.stringify(publishedTeams, null, 2));
     res.render(
         "publishedTeams",
         { publishedTeams }
